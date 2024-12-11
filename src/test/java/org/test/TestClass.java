@@ -31,31 +31,50 @@ public class TestClass extends BaseClass{
 	
 	WebElement click1 = driver.findElement(By.id("drop1"));
 	click(click1);
-//	
+	
 //	WebElement chk1 = driver.findElement(By.id("multiselect1"));
-//	selectByVisibilityText(chk1,"volvox");
+//	selectByVisibilityText(chk1,"Volvo\r\n"
+//			+ "   ");
 //	click(chk1);
 	
 	
 	WebElement chk2 = driver.findElement(By.id("multiselect1"));
 	selectByIndex(chk2, 1);
 	
-	WebElement chk3 = driver.findElement(By.xpath("//option[contains(text(),'Audi')]"));
-	selectByValue(chk3, "Audi");
+	WebElement chk3 = driver.findElement(By.id("multiselect1"));
+	selectByValue(chk3,"audix");
+	
+	//alert
+	explicitWait(1000);
+	WebElement alert1 = driver.findElement(By.id("prompt"));
+	alert1.click();
+	alertAccept("sasi");
+	
+	explicitWait(1000);
+	driver.findElement(By.id("confirm")).click();
+	alertDismiss();
+	
+	//screenshot
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	//Scroll Down - xpath
-//explicitWait(20);
-	WebElement scrl = driver.findElement(By.xpath("//h2[text()='LoginSection']"));
+    WebElement scrl = driver.findElement(By.xpath("//h2[text()='LoginSection']"));
 	scrlollDown(scrl);
-	//wait.until(ExpectedConditions.visibilityOf(scrl));
+	
 	
 	//scroll up - css selector
-	//explicitWait(20);
 	WebElement up = driver.findElement(By.cssSelector("[class=date-header]"));
-	//wait.until(ExpectedConditions.visibilityOf(up));
 	scrollUp(up);
-//	up.click();
+	*/
 
 	
 	
@@ -151,10 +170,7 @@ public class TestClass extends BaseClass{
 		
 	}
 
-	private static void selectByValue(WebElement chk3, String string) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }
 

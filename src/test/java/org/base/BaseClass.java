@@ -1,8 +1,12 @@
 package org.base;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -63,23 +67,23 @@ public class BaseClass {
 
 		Select s = new Select(e);
 		s.selectByVisibleText(value);
+		System.out.println("Selected by TEXT");
 		
-
 	}
    
 	public static void selectByIndex(WebElement e, int index) {
 		Select s = new Select(e);
 		s.selectByIndex(index);
-		System.out.println("Selected by index value :");
-		//return e;
+		System.out.println("Selected by index INDEX");
+	
 	}
 	
-//	public static void selectByValue(WebElement e, String str) {
-//		Select s = new Select(e);
-//		s.selectByValue(str);
-//		System.out.println("selected by value");
-//		
-//	}
+	public static void selectByValue(WebElement e, String value) {
+		Select s = new Select(e);
+		s.selectByValue(value);
+		System.out.println("selected by VALUE");
+		
+	}
 	
 	//sendkeys
 	public static void sendKeys(WebElement e, String value)
@@ -99,6 +103,7 @@ public class BaseClass {
 		jr.executeScript("document.getElementByID('e').value='str';");
 	}
 	
+	
 	public static void scrlollDown(WebElement e)
 	{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -114,13 +119,26 @@ public class BaseClass {
 		
 	}
 	
+	public static void alertAccept(String value) {
+		
+		driver.switchTo().alert().sendKeys(value);
+		driver.switchTo().alert().accept();
+		System.out.println("value sent by alert");
+	}
 
+	public static void alertDismiss() {
+		driver.switchTo().alert().dismiss();
+		System.out.println("Alert Dismissed");
+	}
 
-
-
-
-
-
+	public static void getScreenShot()
+	{
+		File f = new File("C:\\Users\\sasip\\Documents\\Woekspace\\DecMaven\\Screenshots");
+		TakesScreenshot tk = (TakesScreenshot) driver;
+		File screen = tk.getScreenshotAs(OutputType.FILE);
+		
+		
+	}
 
 
 
