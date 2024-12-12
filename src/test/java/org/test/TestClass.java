@@ -58,9 +58,13 @@ public class TestClass extends BaseClass{
 	
 	
 	
+	//frame
 	
-	
-	
+	WebElement fr = driver.findElement(By.id("iframe1"));
+	frame(fr);
+
+	WebElement blog = driver.findElement(By.id("blogsmenu"));
+	moveToElement(blog);
 	
 	
 	

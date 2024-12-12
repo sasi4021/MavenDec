@@ -10,6 +10,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,16 +21,21 @@ public class BaseClass {
 
 	public static WebDriver driver ;
 	public static WebDriverWait wait;
-
+	static ChromeOptions op = new ChromeOptions();
+	
 	public static WebDriver Launchbrowser() {
 
 		WebDriverManager.chromedriver().setup();
 
-		return driver = new ChromeDriver();
-
+		return driver = new ChromeDriver(op);
 
 	}
-
+	
+	public static void chromeOptions()
+	{
+		op.addArguments("--disabled-notifications");
+		
+	}
 	public static void urlLaunch(String str) {
 
 		driver.get(str);
@@ -140,9 +147,18 @@ public class BaseClass {
 		
 	}
 
+	public static void frame(WebElement fr)
+	{
+		driver.switchTo().frame(fr);
+		System.out.println("I am inside the frame");
+	}
 
-
-
+	//actions
+	public static void moveToElement(WebElement e)
+	{
+		Actions a = new Actions(driver);
+		a.moveToElement(e).build().perform();
+	}
 
 
 
